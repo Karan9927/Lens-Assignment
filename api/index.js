@@ -3,26 +3,16 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("../openapi.json");
+const fs = require("fs");
+const YAML = require("yaml");
 require("dotenv").config();
 
 const app = express();
+const file = fs.readFileSync("openapi.yaml", "utf8");
+const swaggerDocument = YAML.parse(file);
 
-app.use(
-  "/api-docs",
-  (req, res, next) => {
-    req.swaggerDoc = swaggerDocument;
-    const url = req.url;
-    if (url.endsWith(".css")) {
-      res.setHeader("Content-Type", "text/css");
-    } else if (url.endsWith(".js")) {
-      res.setHeader("Content-Type", "text/javascript");
-    }
-    next();
-  },
-  swaggerUi.serveFiles(),
-  swaggerUi.setup()
-);
+// Swagger UI
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // MongoDB Connection
 mongoose
@@ -44,9 +34,6 @@ app.use(helmet());
 // Routes
 const userRoutes = require("../routes/userRoutes");
 app.use("/api/users", userRoutes);
-
-// Swagger UI
-// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Invalid Routes
 app.use("*", (req, res) => {
