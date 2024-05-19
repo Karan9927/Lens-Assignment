@@ -35,9 +35,8 @@ const login = async (req, res) => {
     res.json({ "User Token": token, message: "Login Successful!" });
   } catch (error) {
     if (error.message === "Invalid email or password") {
-      res.status(401).json({ error: error.message }); // Return status code 401 for invalid credentials
-    } else {
-      res.status(500).json({ error: "Login error" }); // Return status code 500 for other login failures
+      res.status(401).json({ error: error.message });
+      res.status(500).json({ error: "Login error" });
     }
   }
 };
