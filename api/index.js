@@ -8,7 +8,7 @@ const YAML = require("yaml");
 require("dotenv").config();
 
 const app = express();
-const file = fs.readFileSync("openapi.yaml", "utf8");
+const file = fs.readFileSync("../openapi.yaml", "utf8");
 const swaggerDocument = YAML.parse(file);
 
 // Swagger UI
