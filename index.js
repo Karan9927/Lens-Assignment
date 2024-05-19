@@ -15,6 +15,11 @@ app.use(express.json());
 // Routes
 const userRoutes = require("./routes/userRoutes");
 app.use("/api/users", userRoutes);
+app.use("*", (req, res) => {
+  res.json({
+    message: "Invalid API Request !",
+  });
+});
 
 // MongoDB Connection
 mongoose
