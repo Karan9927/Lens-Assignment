@@ -9,20 +9,19 @@ const app = express();
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGODB_URI, {
-    serverSelectionTimeoutMS: 5000,
-    useFindAndModify: false,
-    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
   .then(() => {
     console.log("Connected to MongoDB");
   })
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Helmet Middleware
-app.use(helmet());
-
 // Middleware
 app.use(bodyParser.json());
+
+// Helmet Middleware
+app.use(helmet());
 
 // Routes
 const userRoutes = require("../routes/userRoutes");
