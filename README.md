@@ -26,7 +26,7 @@ Lens-Assignment is a user authentication and management system built with Node.j
    ```bash
    npm start
    
-## API Endpoints {#api-endpoints}
+## API Endpoints
 ### Register a New User
 
 **URL:** `/api/users/register`
@@ -111,6 +111,12 @@ Retrieves the profile information of the authenticated user.
       }
       ```
   - `401 Unauthorized` - User not authenticated.
- 
+
+ ## Swagger UI
+ ![image](https://github.com/Karan9927/Lens-Assignment/assets/115612744/53e2b591-9c93-45ef-a4a7-e1c2e753ccfa)
+
+## Unit Tests
+![Screenshot 2024-05-19 151858](https://github.com/Karan9927/Lens-Assignment/assets/115612744/e724bd82-351e-4af4-a827-c6b7cd61dfe3)
+
   
 This GitHub repository is part of a hiring assignment to showcase my skills and experience. I hope you find it insightful and look forward to discussing further opportunities with your team.
