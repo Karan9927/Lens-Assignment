@@ -5,8 +5,8 @@ info:
   description: RESTful API for user authentication and management using Node.js
 
 servers:
-  - url: http://localhost:3000
-    description: Local server
+  - url: https://lens-assignment-bay.vercel.app/
+    description: Shared server
 
 paths:
   /api/users/register:
