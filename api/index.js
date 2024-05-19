@@ -9,8 +9,9 @@ const app = express();
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000,
+    useFindAndModify: false,
+    useCreateIndex: true,
   })
   .then(() => {
     console.log("Connected to MongoDB");
