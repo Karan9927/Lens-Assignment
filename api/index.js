@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("../openapi.json");
+const cors = require("cors");
 
 require("dotenv").config();
 
@@ -20,8 +21,9 @@ mongoose
   })
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Swagger UI
+app.use(cors());
 
+// Swagger UI
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Middleware
 app.use(bodyParser.json());
