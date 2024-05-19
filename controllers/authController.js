@@ -46,8 +46,4 @@ const logout = (req, res) => {
   res.json({ message: "Logout successful" });
 };
 
-const getUserProfile = (req, res) => {
-  res.json(req.user);
-};
-
-module.exports = { register, login, logout, getUserProfile };
+module.exports = { register, login, logout };

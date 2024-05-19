@@ -1,7 +1,7 @@
 const User = require("../models/User");
 
-const getUserById = async (userId) => {
-  return await User.findById(userId).select("-password");
+const getUserProfile = (req, res) => {
+  res.json(req.user);
 };
 
-module.exports = { getUserById };
+module.exports = { getUserProfile };
