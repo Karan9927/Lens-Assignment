@@ -13,7 +13,7 @@ app.use(helmet());
 app.use(express.json());
 
 // Routes
-const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("../routes/userRoutes");
 app.use("/api/users", userRoutes);
 
 // Invalid Routes
