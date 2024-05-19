@@ -25,6 +25,8 @@ Lens-Assignment is a user authentication and management system built with Node.j
 4. Start the server
    ```bash
    npm start
+5. Using Swagger UI
+   Start the server by `npm start` and go to `/api-docs` to use Swagger UI
    
 ## API Endpoints
 ### Register a New User
