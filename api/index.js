@@ -30,7 +30,17 @@ const userRoutes = require("../routes/userRoutes");
 app.use("/api/users", userRoutes);
 
 // Swagger UI
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(
+  "/api-docs",
+  (req, res, next) => {
+    req.swaggerDoc = swaggerDocument;
+    res.setHeader("Content-Type", "text/html");
+    next();
+  },
+  swaggerUi.serveFiles(),
+  swaggerUi.setup()
+);
 
 // Invalid Routes
 app.use("*", (req, res) => {
