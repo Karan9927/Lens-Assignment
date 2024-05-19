@@ -4,9 +4,11 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("../openapi.json");
+const pathToSwaggerUi = require("swagger-ui-dist").absolutePath();
 require("dotenv").config();
 
 const app = express();
+app.use(express.static(pathToSwaggerUi));
 
 // MongoDB Connection
 mongoose
