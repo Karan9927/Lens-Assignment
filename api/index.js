@@ -8,6 +8,9 @@ require("dotenv").config();
 
 const app = express();
 
+// Swagger UI
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -28,9 +31,6 @@ app.use(helmet());
 // Routes
 const userRoutes = require("../routes/userRoutes");
 app.use("/api/users", userRoutes);
-
-// Swagger UI
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Invalid Routes
 app.use("*", (req, res) => {
