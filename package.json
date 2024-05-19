@@ -26,6 +26,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.0",
     "nodemon": "^3.1.0",
+    "redoc": "^2.1.4",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-dist": "^5.17.10",
     "swagger-ui-express": "^5.0.0",

@@ -4,12 +4,10 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("../openapi.json");
+
 require("dotenv").config();
 
 const app = express();
-
-// Swagger UI
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // MongoDB Connection
 mongoose
@@ -22,6 +20,9 @@ mongoose
   })
   .catch((err) => console.error("MongoDB connection error:", err));
 
+// Swagger UI
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Middleware
 app.use(bodyParser.json());
 
