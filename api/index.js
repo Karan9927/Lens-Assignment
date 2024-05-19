@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const swaggerUi = require("swagger-ui-express");
-const fs = require("fs");
-const YAML = require("yaml");
+const swaggerDocument = require("../openapi.json");
 require("dotenv").config();
 
 const app = express();
@@ -30,9 +29,7 @@ app.use(helmet());
 const userRoutes = require("../routes/userRoutes");
 app.use("/api/users", userRoutes);
 
-const file = fs.readFileSync("openapi.yaml", "utf8");
-const swaggerDocument = YAML.parse(file);
-
+// Swagger UI
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Invalid Routes
